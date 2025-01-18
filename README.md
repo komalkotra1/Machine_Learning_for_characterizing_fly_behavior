@@ -91,6 +91,8 @@ copied, failed = splitter.process(
     non_saccade_folder="path/to/non_saccade"
 )
 print(f"Processed {copied} files")
+```
+
 ## Dependencies
 
 * numpy: Array operations and numerical computations
