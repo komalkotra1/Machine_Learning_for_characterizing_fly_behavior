@@ -23,6 +23,8 @@ src/
 ├── video_analysis/       # Video processing and blob detection
 ├── saccade_detection/   # Saccade identification from trajectories
 └── data_processing/     # Trajectory data organization
+        ├── trajectory_splitter.py
+        └── tracking_file_processor.py  
 ```
 
 ## Modules
@@ -92,6 +94,29 @@ copied, failed = splitter.process(
 )
 print(f"Processed {copied} files")
 ```
+#### Tracking File Processor
+A component of the data processing module that handles file organization.
+
+##### Features:
+* Compares contents between tracking and saccade folders
+* Identifies and extracts non-saccade files
+* Provides detailed processing statistics
+* Flexible file pattern matching
+
+##### Usage:
+```python
+from data_processing.tracking_file_processor import TrackingFileProcessor
+
+processor = TrackingFileProcessor()
+results = processor.process(
+    saccade_folder="path/to/saccade",
+    tracking_folder="path/to/tracking",
+    output_folder="path/to/output"
+)
+results.print_summary()
+```
+
+## Dependencies
 
 ## Dependencies
 
@@ -99,7 +124,8 @@ print(f"Processed {copied} files")
 * pandas: Data handling and CSV processing
 * scipy: Signal processing for saccade detection
 * tqdm: Progress bars for batch processing
-
+* pathlib: Path handling and file operations
+  
 ## Contact
 Currently in progress.
 This is the working repository for my master thesis project, where I am trying to classify how flies behave in a free-flying setup which is developed in the NFC group of MPINB, Bonn. The project is in progress at the moment. The goal is to characterize different flight behaviors in the presence of a looming stimulus using machine learning algorithm. 
