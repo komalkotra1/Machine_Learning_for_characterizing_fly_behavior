@@ -21,7 +21,8 @@ pip install -r requirements.txt
 ```
 src/
 ├── video_analysis/       # Video processing and blob detection
-└── saccade_detection/   # Saccade identification from trajectories
+├── saccade_detection/   # Saccade identification from trajectories
+└── data_processing/     # Trajectory data organization
 ```
 
 ## Modules
