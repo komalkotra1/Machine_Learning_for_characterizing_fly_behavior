@@ -232,6 +232,34 @@ after_results = analyzer.analyze_folder(
     analysis_label="after"
 )
 ```
+
+#### Bin Data Preparation
+Data preparation utility for merging binned and unbinned analysis results.
+
+##### Features:
+* Merges raw heading data with binned categorizations
+* Flexible column mapping
+* Data validation and cleaning
+* Configurable merge operations
+
+##### Usage:
+```python
+from stimulus_analysis.bin_preparation import BinDataPreparator, MergeConfig
+
+# Configure merge operation
+config = MergeConfig(
+    key_column='File Name',
+    merge_columns=['difference_in_heading', 'interp_heading', 'heading']
+)
+
+# Create preparator and process data
+preparator = BinDataPreparator(config)
+merged_df = preparator.prepare_data(
+    unbinned_path="path/to/unbinned.csv",
+    binned_path="path/to/binned.csv",
+    output_path="path/to/output.csv"
+)
+```
 ## Dependencies
 
 * numpy: Array operations and numerical computations
