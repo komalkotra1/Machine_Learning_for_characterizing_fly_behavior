@@ -20,14 +20,21 @@ pip install -r requirements.txt
 
 ```
 src/
-├── video_analysis/       # Video processing and blob detection
-├── saccade_detection/   # Saccade identification from trajectories
-└── data_processing/     # Trajectory data organization
-|       ├── trajectory_splitter.py
-|       └── tracking_file_processor.py
-|       └── trajectory_filter.py
-└── stimulus_analysis
-└── heading_analyzer.py
+├── video_analysis/           # Video processing and blob detection
+│   ├── __init__.py
+│   └── video_processor.py    # Process video files for tracking
+├── saccade_detection/       # Saccade identification from trajectories
+│   ├── __init__.py
+│   └── detector.py          # Detect saccadic movements
+├── data_processing/         # Data organization and processing
+│   ├── __init__.py
+│   ├── trajectory_splitter.py    # Separate saccade/non-saccade data
+│   ├── tracking_file_processor.py # Process tracking files
+│   └── trajectory_filter.py       # Filter valid trajectories
+└── stimulus_analysis/       # Stimulus response analysis
+    ├── __init__.py
+    ├── heading_analyzer.py   # Basic heading analysis
+    └── binned_analyzer.py    # Binned heading analysis
 ```
 
 ## Modules
@@ -178,6 +185,53 @@ results_df = analyzer.analyze_folder(
     output_folder="path/to/results"
 )
 ```
+#### Binned Analysis
+Advanced analysis component for categorizing heading changes.
+
+##### Features:
+* Flexible binning configurations
+* Absolute or relative angle binning
+* Integrated velocity calculations
+* Support for before/after stimulus analysis
+* Detailed result categorization
+
+##### Usage:
+```python
+from stimulus_analysis.binned_analyzer import BinnedHeadingAnalyzer, BinConfig, TimeWindow
+
+# Configure analysis
+bin_config = BinConfig(
+    bin_edges=[0, 45, 90, 135, 180],
+    use_absolute_values=True
+)
+
+time_window = TimeWindow(
+    before_stimulus=(495, 535),
+    after_stimulus=(620, 660)
+)
+
+# Create analyzer
+analyzer = BinnedHeadingAnalyzer(
+    calibration_file="path/to/calibration.csv",
+    bin_config=bin_config,
+    time_window=time_window
+)
+
+# Analyze before stimulus
+before_results = analyzer.analyze_folder(
+    input_folder="path/to/input",
+    output_folder="path/to/output",
+    analysis_label="before"
+)
+
+# Update time window and analyze after stimulus
+analyzer.time_window.active_window = "after"
+after_results = analyzer.analyze_folder(
+    input_folder="path/to/input",
+    output_folder="path/to/output",
+    analysis_label="after"
+)
+```
 ## Dependencies
 
 * numpy: Array operations and numerical computations
@@ -186,6 +240,7 @@ results_df = analyzer.analyze_folder(
 * tqdm: Progress bars for batch processing
 * pathlib: Path handling and file operations
 * dataclasses: Data structure organization
+* re: Regular expression operations
   
 ## Contact
 Currently in progress.
