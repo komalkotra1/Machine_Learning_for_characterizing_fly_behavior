@@ -23,9 +23,11 @@ src/
 ├── video_analysis/       # Video processing and blob detection
 ├── saccade_detection/   # Saccade identification from trajectories
 └── data_processing/     # Trajectory data organization
-        ├── trajectory_splitter.py
-        └── tracking_file_processor.py
-        └── trajectory_filter.py 
+|       ├── trajectory_splitter.py
+|       └── tracking_file_processor.py
+|       └── trajectory_filter.py
+└── stimulus_analysis
+└── heading_analyzer.py
 ```
 
 ## Modules
@@ -141,6 +143,40 @@ results = filter.filter_trajectories(
     output_folder="path/to/output"
 )
 results.print_summary()
+```
+
+#### Heading Analyzer
+Analyzes fly heading changes in response to visual stimuli.
+
+##### Features:
+* Computes heading before and after stimulus
+* Calibration-based heading interpolation
+* Configurable analysis time windows
+* Automated batch processing
+* Results visualization
+
+##### Usage:
+```python
+from stimulus_analysis.heading_analyzer import HeadingAnalyzer, TimeWindow
+
+# Configure analysis windows
+time_window = TimeWindow(
+    before_stimulus=(495, 535),
+    after_stimulus=(620, 660),
+    fps=25
+)
+
+# Create analyzer
+analyzer = HeadingAnalyzer(
+    calibration_file="path/to/calibration.csv",
+    time_window=time_window
+)
+
+# Process files
+results_df = analyzer.analyze_folder(
+    input_folder="path/to/trajectories",
+    output_folder="path/to/results"
+)
 ```
 ## Dependencies
 
