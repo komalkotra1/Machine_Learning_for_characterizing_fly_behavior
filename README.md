@@ -24,7 +24,8 @@ src/
 ├── saccade_detection/   # Saccade identification from trajectories
 └── data_processing/     # Trajectory data organization
         ├── trajectory_splitter.py
-        └── tracking_file_processor.py  
+        └── tracking_file_processor.py
+        └── trajectory_filter.py 
 ```
 
 ## Modules
@@ -115,9 +116,32 @@ results = processor.process(
 )
 results.print_summary()
 ```
+#### Trajectory Filter
+Quality control component that filters trajectory data based on completeness criteria.
 
-## Dependencies
+##### Features:
+* Validates data completeness within specified frame ranges
+* Checks for missing coordinate values
+* Detailed filtering statistics
+* Configurable validation parameters
 
+##### Usage:
+```python
+from data_processing.trajectory_filter import TrajectoryFilter, FilterConfig
+
+config = FilterConfig(
+    start_frame=495,
+    end_frame=661,
+    required_columns=['x', 'y']
+)
+
+filter = TrajectoryFilter(config)
+results = filter.filter_trajectories(
+    input_folder="path/to/input",
+    output_folder="path/to/output"
+)
+results.print_summary()
+```
 ## Dependencies
 
 * numpy: Array operations and numerical computations
@@ -125,6 +149,7 @@ results.print_summary()
 * scipy: Signal processing for saccade detection
 * tqdm: Progress bars for batch processing
 * pathlib: Path handling and file operations
+* dataclasses: Data structure organization
   
 ## Contact
 Currently in progress.
