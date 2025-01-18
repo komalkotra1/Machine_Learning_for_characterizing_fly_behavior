@@ -69,7 +69,27 @@ params = SaccadeParameters(
 detector = SaccadeDetector(params)
 detector.process_files("input/folder", "output/folder")
 ```
+### 3. Trajectory Data Processing (`src/data_processing/`)
 
+Manages the organization and processing of trajectory data files.
+
+#### Key features:
+* Separates tracking files into saccade and non-saccade sets
+* Handles file organization and copying
+* Error handling and reporting
+* Command-line interface for batch processing
+
+#### Usage:
+```python
+from data_processing.trajectory_splitter import TrajectoryDataSplitter
+
+splitter = TrajectoryDataSplitter()
+copied, failed = splitter.process(
+    tracking_folder="path/to/tracking",
+    saccade_folder="path/to/saccade_detected",
+    non_saccade_folder="path/to/non_saccade"
+)
+print(f"Processed {copied} files")
 ## Dependencies
 
 * numpy: Array operations and numerical computations
