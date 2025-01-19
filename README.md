@@ -23,9 +23,19 @@ pip install -r requirements.txt
    - Create an output directory for results
 
 2. Run the complete analysis pipeline:
+   The main.py script provides a complete analysis pipeline that runs all componenets in sequence.
 ```bash
 python main.py --video-dir /path/to/videos --output-dir /path/to/output --calibration /path/to/calibration.csv
 ```
+Available Arguments:
+```bash
+--video-dir         Directory containing input videos
+--output-dir        Directory for analysis outputs
+--calibration       Path to calibration file
+--saccade-threshold Threshold for saccade detection (default: 50.0)
+```
+
+
 Alternative: Run Specific components:
 
 Process videos only:
@@ -40,17 +50,7 @@ Full heading analysis:
 ```bash
 python -m src.stimulus_analysis.heading_analyzer --input /path/to/data --output /path/to/results
 ```
-Using the Main Pipeline(main.py):
-The main.py script provides a complete analysis pipeline that runs all componenets in sequence.
 
-
-Available Arguments:
-```bash
---video-dir         Directory containing input videos
---output-dir        Directory for analysis outputs
---calibration       Path to calibration file
---saccade-threshold Threshold for saccade detection (default: 50.0)
-```
 
 
 ## Project Structure
