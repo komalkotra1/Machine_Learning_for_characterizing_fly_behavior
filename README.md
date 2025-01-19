@@ -31,7 +31,8 @@ src/
 │   ├── trajectory_splitter.py    # Separate saccade/non-saccade data
 │   ├── tracking_file_processor.py # Process tracking files
 │   ├── trajectory_filter.py       # Filter valid trajectories
-│   └── file_matcher.py           # Match and merge related files
+│   ├── file_matcher.py           # Match and merge related files
+│   └── bin_segmenter.py          # Segment data into bin ranges
 └── stimulus_analysis/       # Stimulus response analysis
       ├── init.py
       ├── heading_analyzer.py   # Basic heading analysis
@@ -321,7 +322,33 @@ matched_df = matcher.match_bin_data(
     output_file="path/to/matched.csv"
 )
 ```
+#### Bin Segmenter
+Utility for segmenting data into predefined bin ranges.
 
+##### Features:
+* Configurable bin segment definitions
+* Automated file organization by segment
+* Flexible bin range parsing
+* Detailed segmentation reporting
+
+##### Usage:
+```python
+from data_processing.bin_segmenter import BinSegmenter, BinSegment
+
+# Create segmenter with custom ranges
+segmenter = BinSegmenter([
+    BinSegment(0, 45, '0_45'),
+    BinSegment(45, 90, '45_90'),
+    BinSegment(90, 135, '90_135'),
+    BinSegment(135, 180, '135_180')
+])
+
+# Segment data
+segment_files = segmenter.segment_data(
+    input_file="path/to/input.csv",
+    output_dir="path/to/output"
+)
+```
 ## Dependencies
 
 * numpy: Array operations and numerical computations
