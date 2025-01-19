@@ -351,14 +351,16 @@ segment_files = segmenter.segment_data(
 ```
 ## Dependencies
 
-* numpy: Array operations and numerical computations
-* pandas: Data handling and CSV processing
-* scipy: Signal processing for saccade detection
-* tqdm: Progress bars for batch processing
+* numpy>=1.21.0: Array operations and numerical computations
+* pandas>=1.3.0: Data handling and CSV processing
+* scipy>=1.7.0: Signal processing for saccade detection
+* matplotlib>=3.4.0: Visualization and plotting
+* seaborn>=0.11.0: Enhanced visualization
+* tqdm>=4.62.0: Progress bars for batch processing
 * pathlib: Path handling and file operations
 * dataclasses: Data structure organization
 * re: Regular expression operations
-  
+* 
 ## Contact
 Currently in progress.
 This is the working repository for my master thesis project, where I am trying to classify how flies behave in a free-flying setup which is developed in the NFC group of MPINB, Bonn. The project is in progress at the moment. The goal is to characterize different flight behaviors in the presence of a looming stimulus using machine learning algorithm. 
