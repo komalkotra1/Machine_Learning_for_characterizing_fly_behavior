@@ -4,7 +4,7 @@ Analysis pipeline for studying free flight behavior in Drosophila melanogaster u
 
 ## Project Overview
 
-This project processes and analyzes free flight behavior of Drosophila in a chamber with looming stimulus, using multi-camera tracking (Braid) for precise 3D position data.
+This project processes and analyzes free flight behavior of Drosophila in a chamber with looming stimulus, using multi-camera tracking (Braid) for precise 3D position data. This is my masters thesis project and is currently ongoing, so keep your eyes for the recent commits.
 
 ## Installation
 
