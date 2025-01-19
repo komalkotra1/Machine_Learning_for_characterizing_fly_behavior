@@ -38,8 +38,8 @@ src/
       ├── heading_analyzer.py   # Basic heading analysis
       ├── binned_analyzer.py    # Binned heading analysis
       ├── bin_preparation.py    # Prepare and merge binned data
-      └── visualization.py      # Data visualization tools
-```
+      ├── visualization.py      # Basic visualization tools
+      └── bin_visualizer.py     # Comparative visualization tools
 
 ## Modules
 
@@ -347,6 +347,37 @@ segmenter = BinSegmenter([
 segment_files = segmenter.segment_data(
     input_file="path/to/input.csv",
     output_dir="path/to/output"
+)
+```
+
+#### Bin Comparison Visualizer
+Advanced visualization tool for comparing before/after stimulus responses.
+
+##### Features:
+* Multiple plot types (line, scatter, bar)
+* Customizable plot styling
+* Automatic plot layout management
+* High-resolution output
+* Comprehensive data comparison
+
+##### Usage:
+```python
+from stimulus_analysis.bin_visualizer import BinComparisonVisualizer, PlotStyles
+
+# Configure visualization style
+styles = PlotStyles(
+    figsize=(18, 6),
+    before_color='orange',
+    after_color='red',
+    scatter_color='purple',
+    dpi=300
+)
+
+# Create visualizer and generate plots
+visualizer = BinComparisonVisualizer(styles)
+visualizer.visualize_comparison(
+    input_file="path/to/comparison.csv",
+    output_file="path/to/output.png"
 )
 ```
 ## Dependencies
