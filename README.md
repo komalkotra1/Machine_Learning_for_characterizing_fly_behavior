@@ -61,20 +61,20 @@ machine_learning_for_characterizing_fly_behavior/
 ├── requirements.txt         # Project dependencies
 ├── README.md               # Project documentation
 └── src/                    # Source code modules
-│   ├── video_analysis/           # Video processing and blob detection
-│      ├── init.py
-│      └── video_processor.py    # Process video files for tracking
-│   ├── saccade_detection/       # Saccade identification from trajectories
-│      ├── init.py
-│      └── detector.py          # Detect saccadic movements
-│   ├── data_processing/         # Data organization and processing
-│      ├── init.py
-│      ├── trajectory_splitter.py    # Separate saccade/non-saccade data
-│      ├── tracking_file_processor.py # Process tracking files
-│      ├── trajectory_filter.py       # Filter valid trajectories
-│      ├── file_matcher.py           # Match and merge related files
-│      └── bin_segmenter.py          # Segment data into bin ranges
-└── stimulus_analysis/       # Stimulus response analysis
+    ├── video_analysis/           # Video processing and blob detection
+       ├── init.py
+       └── video_processor.py    # Process video files for tracking
+    ├── saccade_detection/       # Saccade identification from trajectories
+       ├── init.py
+       └── detector.py          # Detect saccadic movements
+    ├── data_processing/         # Data organization and processing
+       ├── init.py
+       ├── trajectory_splitter.py    # Separate saccade/non-saccade data
+       ├── tracking_file_processor.py # Process tracking files
+       ├── trajectory_filter.py       # Filter valid trajectories
+       ├── file_matcher.py           # Match and merge related files
+       └── bin_segmenter.py          # Segment data into bin ranges
+   ├──stimulus_analysis/       # Stimulus response analysis
       ├── init.py
       ├── heading_analyzer.py   # Basic heading analysis
       ├── binned_analyzer.py    # Binned heading analysis
