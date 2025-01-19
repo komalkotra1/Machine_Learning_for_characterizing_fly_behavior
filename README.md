@@ -15,6 +15,36 @@ git clone https://github.com/yourusername/Machine_Learning_for_characterizing_fl
 # Install required packages
 pip install -r requirements.txt
 ```
+### Usage
+
+1. Prepare your data:
+   - Place your video files in a designated directory
+   - Ensure you have the calibration file ready
+   - Create an output directory for results
+
+2. Run the complete analysis pipeline:
+```bash
+python main.py --video-dir /path/to/videos --output-dir /path/to/output --calibration /path/to/calibration.csv
+
+####Alternative: Run Specific components:
+#####Process videos only
+python -m src.video_analysis.video_processor --input /path/to/videos --output /path/to/tracking
+
+#####Detect saccades
+python -m src.saccade_detection.detector --input /path/to/tracking --output /path/to/saccades
+
+#####Full heading analysis
+python -m src.stimulus_analysis.heading_analyzer --input /path/to/data --output /path/to/results
+#####Using the Main Pipeline(main.py)
+The main.py script provides a complete analysis pipeline that runs all componenets in sequence.
+######Available Arguments:
+'''bash
+--video-dir         Directory containing input videos
+--output-dir        Directory for analysis outputs
+--calibration       Path to calibration file
+--saccade-threshold Threshold for saccade detection (default: 50.0)
+'''
+
 
 ## Project Structure
 
