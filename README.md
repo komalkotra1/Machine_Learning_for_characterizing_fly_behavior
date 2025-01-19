@@ -21,20 +21,23 @@ pip install -r requirements.txt
 ```
 src/
 ├── video_analysis/           # Video processing and blob detection
-│   ├── __init__.py
+│   ├── init.py
 │   └── video_processor.py    # Process video files for tracking
 ├── saccade_detection/       # Saccade identification from trajectories
-│   ├── __init__.py
+│   ├── init.py
 │   └── detector.py          # Detect saccadic movements
 ├── data_processing/         # Data organization and processing
-│   ├── __init__.py
+│   ├── init.py
 │   ├── trajectory_splitter.py    # Separate saccade/non-saccade data
 │   ├── tracking_file_processor.py # Process tracking files
-│   └── trajectory_filter.py       # Filter valid trajectories
+│   ├── trajectory_filter.py       # Filter valid trajectories
+│   └── file_matcher.py           # Match and merge related files
 └── stimulus_analysis/       # Stimulus response analysis
-    ├── __init__.py
-    ├── heading_analyzer.py   # Basic heading analysis
-    └── binned_analyzer.py    # Binned heading analysis
+      ├── init.py
+      ├── heading_analyzer.py   # Basic heading analysis
+      ├── binned_analyzer.py    # Binned heading analysis
+      ├── bin_preparation.py    # Prepare and merge binned data
+      └── visualization.py      # Data visualization tools
 ```
 
 ## Modules
@@ -260,6 +263,29 @@ merged_df = preparator.prepare_data(
     output_path="path/to/output.csv"
 )
 ```
+#### File Matcher
+Utility for matching and merging related data files from different analysis stages.
+
+##### Features:
+* Matches files based on common identifiers
+* Provides detailed matching statistics
+* Flexible column matching
+* Safe data loading and validation
+
+##### Usage:
+```python
+from data_processing.file_matcher import FileMatcher
+
+matcher = FileMatcher(match_column='File Name')
+results = matcher.match_files(
+    first_file="path/to/first.csv",
+    second_file="path/to/second.csv",
+    output_file="path/to/output.csv"
+)
+```
+# View matching statistics
+results.print_summary()
+
 ## Dependencies
 
 * numpy: Array operations and numerical computations
