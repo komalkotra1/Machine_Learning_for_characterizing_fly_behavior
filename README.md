@@ -286,6 +286,42 @@ results = matcher.match_files(
 # View matching statistics
 results.print_summary()
 
+#### Bin Matcher
+Specialized utility for processing and matching data based on bin ranges.
+
+##### Features:
+* Configurable bin range definitions
+* Flexible bin parsing and matching
+* Automated file organization by bin
+* Data matching across analysis stages
+* Detailed processing reports
+
+##### Usage:
+```python
+from data_processing.bin_matcher import BinMatcher, BinRange
+
+# Create matcher with custom bin ranges
+matcher = BinMatcher([
+    BinRange(0, 45, '0_45'),
+    BinRange(45, 90, '90_45'),
+    BinRange(90, 135, '135_90'),
+    BinRange(135, 180, '180_135')
+])
+
+# Process bins
+output_files = matcher.process_bins(
+    input_file="path/to/input.csv",
+    output_dir="path/to/output"
+)
+
+# Match with reference data
+matched_df = matcher.match_bin_data(
+    bin_file="path/to/bin_file.csv",
+    reference_file="path/to/reference.csv",
+    output_file="path/to/matched.csv"
+)
+```
+
 ## Dependencies
 
 * numpy: Array operations and numerical computations
