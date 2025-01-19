@@ -45,6 +45,7 @@ machine_learning_for_characterizing_fly_behavior/
       ├── visualization.py      # Basic visualization tools
       └── bin_visualizer.py     # Comparative visualization tools
 
+```
 
 ## Modules
 
