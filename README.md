@@ -42,13 +42,15 @@ python -m src.stimulus_analysis.heading_analyzer --input /path/to/data --output 
 ```
 Using the Main Pipeline(main.py):
 The main.py script provides a complete analysis pipeline that runs all componenets in sequence.
+
+
 Available Arguments:
-'''bash
+```bash
 --video-dir         Directory containing input videos
 --output-dir        Directory for analysis outputs
 --calibration       Path to calibration file
 --saccade-threshold Threshold for saccade detection (default: 50.0)
-'''
+```
 
 
 ## Project Structure
