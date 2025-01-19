@@ -26,22 +26,23 @@ pip install -r requirements.txt
 ```bash
 python main.py --video-dir /path/to/videos --output-dir /path/to/output --calibration /path/to/calibration.csv
 ```
-####Alternative: Run Specific components:
-#####Process videos only
+Alternative: Run Specific components:
+
+Process videos only:
 ```bash
 python -m src.video_analysis.video_processor --input /path/to/videos --output /path/to/tracking
 ```
-#####Detect saccades
+Detect saccades:
 ```bash
 python -m src.saccade_detection.detector --input /path/to/tracking --output /path/to/saccades
 ```
-#####Full heading analysis
+Full heading analysis:
 ```bash
 python -m src.stimulus_analysis.heading_analyzer --input /path/to/data --output /path/to/results
 ```
-#####Using the Main Pipeline(main.py)
+Using the Main Pipeline(main.py):
 The main.py script provides a complete analysis pipeline that runs all componenets in sequence.
-######Available Arguments:
+Available Arguments:
 '''bash
 --video-dir         Directory containing input videos
 --output-dir        Directory for analysis outputs
