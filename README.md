@@ -19,20 +19,24 @@ pip install -r requirements.txt
 ## Project Structure
 
 ```
-src/
-├── video_analysis/           # Video processing and blob detection
-│   ├── init.py
-│   └── video_processor.py    # Process video files for tracking
-├── saccade_detection/       # Saccade identification from trajectories
-│   ├── init.py
-│   └── detector.py          # Detect saccadic movements
-├── data_processing/         # Data organization and processing
-│   ├── init.py
-│   ├── trajectory_splitter.py    # Separate saccade/non-saccade data
-│   ├── tracking_file_processor.py # Process tracking files
-│   ├── trajectory_filter.py       # Filter valid trajectories
-│   ├── file_matcher.py           # Match and merge related files
-│   └── bin_segmenter.py          # Segment data into bin ranges
+machine_learning_for_characterizing_fly_behavior/
+├── main.py                  # Main analysis pipeline
+├── requirements.txt         # Project dependencies
+├── README.md               # Project documentation
+└── src/                    # Source code modules
+│   ├── video_analysis/           # Video processing and blob detection
+│      ├── init.py
+│      └── video_processor.py    # Process video files for tracking
+│   ├── saccade_detection/       # Saccade identification from trajectories
+│      ├── init.py
+│      └── detector.py          # Detect saccadic movements
+│   ├── data_processing/         # Data organization and processing
+│      ├── init.py
+│      ├── trajectory_splitter.py    # Separate saccade/non-saccade data
+│      ├── tracking_file_processor.py # Process tracking files
+│      ├── trajectory_filter.py       # Filter valid trajectories
+│      ├── file_matcher.py           # Match and merge related files
+│      └── bin_segmenter.py          # Segment data into bin ranges
 └── stimulus_analysis/       # Stimulus response analysis
       ├── init.py
       ├── heading_analyzer.py   # Basic heading analysis
@@ -40,6 +44,7 @@ src/
       ├── bin_preparation.py    # Prepare and merge binned data
       ├── visualization.py      # Basic visualization tools
       └── bin_visualizer.py     # Comparative visualization tools
+
 
 ## Modules
 
